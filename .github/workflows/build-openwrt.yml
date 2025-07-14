@@ -30,7 +30,7 @@ env:
   # OpenWrt 源码仓库地址
   REPO_URL: https://github.com/openwrt/openwrt.git
   # OpenWrt 源码分支 (例如: master, openwrt-23.05)
-  REPO_BRANCH: master
+  REPO_BRANCH: main
   # 您的 OpenWrt .config 文件在仓库中的路径
   CONFIG_FILE: ./openwrt.config
   # 编译产物（固件）上传到 Artifacts 时的名称
@@ -111,8 +111,10 @@ jobs:
       - name: Compile the firmware
         run: |
           cd openwrt
+          echo "show cpu"
+          lscpu
           echo "Starting firmware compilation..."
-          make -j$(nproc) V=s
+          make -j$(nproc)
 
       # 步骤8: 如果需要，通过 SSH 连接进行调试
       - name: SSH connection to debug
