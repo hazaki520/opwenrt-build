@@ -113,6 +113,8 @@ jobs:
           cd openwrt
           echo "show cpu"
           lscpu
+          lspci
+          free -m
           echo "Starting firmware compilation..."
           make -j$(nproc)
 
